@@ -210,6 +210,7 @@ struct Calculator  {
     /// displayNumberFormatter is used in displayString()
     private let displayNumberFormatter = {
         let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
         numberFormatter.minimumIntegerDigits = 1
         numberFormatter.minimumFractionDigits = 0
         numberFormatter.maximumFractionDigits = 10
