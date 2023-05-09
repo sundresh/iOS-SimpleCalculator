@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-@main
+// NOTE: This is no longer used
+//@main
 struct SimpleCalculatorApp: App {
     var body: some Scene {
         WindowGroup {

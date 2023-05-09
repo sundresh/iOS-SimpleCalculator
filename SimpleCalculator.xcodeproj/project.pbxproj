@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		804654342A09BB1F009BAF49 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 804654332A09BB1F009BAF49 /* Settings.bundle */; };
 		806742522A01F9C3003361DF /* SimpleCalculatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806742512A01F9C3003361DF /* SimpleCalculatorApp.swift */; };
 		806742542A01F9C3003361DF /* CalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806742532A01F9C3003361DF /* CalculatorView.swift */; };
 		806742562A01F9C5003361DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 806742552A01F9C5003361DF /* Assets.xcassets */; };
@@ -17,6 +18,9 @@
 		8067427E2A02F16F003361DF /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8067427D2A02F16F003361DF /* Calculator.swift */; };
 		806742802A02F5E5003361DF /* CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8067427F2A02F5E5003361DF /* CalculatorTests.swift */; };
 		8077FC5C2A04A1FA00FB00BD /* ObservableValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8077FC5B2A04A1FA00FB00BD /* ObservableValue.swift */; };
+		807B25D02A06C7C800B276C2 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807B25CF2A06C7C800B276C2 /* CalculatorViewController.swift */; };
+		807B26142A06D7E700B276C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807B26132A06D7E700B276C2 /* AppDelegate.swift */; };
+		807B26162A06D7ED00B276C2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807B26152A06D7ED00B276C2 /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		804654332A09BB1F009BAF49 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		8067424E2A01F9C3003361DF /* SimpleCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		806742512A01F9C3003361DF /* SimpleCalculatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCalculatorApp.swift; sourceTree = "<group>"; };
 		806742532A01F9C3003361DF /* CalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorView.swift; sourceTree = "<group>"; };
@@ -50,6 +55,9 @@
 		8067427D2A02F16F003361DF /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 		8067427F2A02F5E5003361DF /* CalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTests.swift; sourceTree = "<group>"; };
 		8077FC5B2A04A1FA00FB00BD /* ObservableValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableValue.swift; sourceTree = "<group>"; };
+		807B25CF2A06C7C800B276C2 /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
+		807B26132A06D7E700B276C2 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		807B26152A06D7ED00B276C2 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +88,7 @@
 		806742452A01F9C3003361DF = {
 			isa = PBXGroup;
 			children = (
+				804654332A09BB1F009BAF49 /* Settings.bundle */,
 				806742502A01F9C3003361DF /* SimpleCalculator */,
 				806742612A01F9C5003361DF /* SimpleCalculatorTests */,
 				8067426B2A01F9C5003361DF /* SimpleCalculatorUITests */,
@@ -100,10 +109,13 @@
 		806742502A01F9C3003361DF /* SimpleCalculator */ = {
 			isa = PBXGroup;
 			children = (
+				807B26132A06D7E700B276C2 /* AppDelegate.swift */,
 				8067427D2A02F16F003361DF /* Calculator.swift */,
 				8067427B2A020A72003361DF /* CalculatorEntryBuffer.swift */,
 				806742532A01F9C3003361DF /* CalculatorView.swift */,
+				807B25CF2A06C7C800B276C2 /* CalculatorViewController.swift */,
 				8077FC5B2A04A1FA00FB00BD /* ObservableValue.swift */,
+				807B26152A06D7ED00B276C2 /* SceneDelegate.swift */,
 				806742512A01F9C3003361DF /* SimpleCalculatorApp.swift */,
 				806742552A01F9C5003361DF /* Assets.xcassets */,
 				806742572A01F9C5003361DF /* Preview Content */,
@@ -241,6 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				806742592A01F9C5003361DF /* Preview Assets.xcassets in Resources */,
+				804654342A09BB1F009BAF49 /* Settings.bundle in Resources */,
 				806742562A01F9C5003361DF /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,7 +283,10 @@
 				8077FC5C2A04A1FA00FB00BD /* ObservableValue.swift in Sources */,
 				8067427E2A02F16F003361DF /* Calculator.swift in Sources */,
 				806742542A01F9C3003361DF /* CalculatorView.swift in Sources */,
+				807B26142A06D7E700B276C2 /* AppDelegate.swift in Sources */,
+				807B25D02A06C7C800B276C2 /* CalculatorViewController.swift in Sources */,
 				806742522A01F9C3003361DF /* SimpleCalculatorApp.swift in Sources */,
+				807B26162A06D7ED00B276C2 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,7 +448,9 @@
 				DEVELOPMENT_TEAM = 82VXL6987H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = SimpleCalculator/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -461,7 +479,9 @@
 				DEVELOPMENT_TEAM = 82VXL6987H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = SimpleCalculator/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
