@@ -8,12 +8,15 @@
 import SwiftUI
 import UIKit
 
-/// Accessors to read the system settings for this app.
-struct Settings {
-    static let swiftUIPreferenceKey = "swiftui_preference"
+extension UserDefaults {
+    static let useSwiftUIPreferenceKey = "useSwiftUI"
 
-    static var userInterfaceSettingIsSwiftUI: Bool {
-        UserDefaults.standard.bool(forKey: swiftUIPreferenceKey)
+    @objc dynamic var useSwiftUI: Bool {
+        return bool(forKey: UserDefaults.useSwiftUIPreferenceKey)
+    }
+
+    static var useSwiftUI: Bool {
+        UserDefaults.standard.bool(forKey: useSwiftUIPreferenceKey)
     }
 }
 
@@ -22,11 +25,26 @@ struct Settings {
 /// whether to SwiftUI or UIKit implementation of the user interface, depending on the setting of
 /// the `swiftui_preference` application setting in the system Settings app.
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+    let calculator: Calculator
     var window: UIWindow?
+    var observer: NSKeyValueObservation?
 
-    @IBAction
-    private func onButtonTap(sender: UIButton, forEvent event: UIEvent) {
-        print("button tapped. sender = \(String(describing: sender)), event = \(String(describing: event))")
+    override init() {
+        calculator = Calculator()
+        super.init()
+    }
+
+    deinit {
+        observer?.invalidate()
+    }
+
+    private func setRootViewController() {
+        // Construct the appropriate user interface based on the app settings.
+        if UserDefaults.useSwiftUI {
+            window?.rootViewController = UIHostingController(rootView: CalculatorView(calculator: calculator))
+        } else {
+            window?.rootViewController = CalculatorViewController(calculator: calculator)
+        }
     }
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -35,12 +53,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         window?.makeKeyAndVisible()
 
-        // Construct the appropriate user interface based on the app settings.
-        if Settings.userInterfaceSettingIsSwiftUI {
-            window?.rootViewController = UIHostingController(rootView: CalculatorView())
-        } else {
-            window?.rootViewController = CalculatorViewController()
-        }
+        observer = UserDefaults.standard.observe(\.useSwiftUI, options: [.initial, .new], changeHandler: { (defaults, change) in
+            self.setRootViewController()
+        })
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -8,7 +8,7 @@
 import Foundation
 
 /// Calculator implements the actual calculator state and behavior.
-struct Calculator  {
+class Calculator: ObservableObject {
     /// The basic arithmetic operations supported by our calculator
     enum Operation {
         case add
@@ -25,16 +25,14 @@ struct Calculator  {
         case argument
     }
 
-    private let flashDisplay: () -> Void
-
-    private var enteredNumberSinceLastReset = false
-    private var accumulator: Double = 0.0
-    private var operation: Operation = .add
-    private var argument: Double = 0.0
-    private var activeRegisterId: RegisterId = .accumulator
-    private var entryBuffer: CalculatorEntryBuffer
-    private var negateShouldBeginEditing = true
-    private var isEditing: Bool = false {
+    @Published private var enteredNumberSinceLastReset = false
+    @Published private var accumulator: Double = 0.0
+    @Published private var operation: Operation = .add
+    @Published private var argument: Double = 0.0
+    @Published private var activeRegisterId: RegisterId = .accumulator
+    @Published private var entryBuffer: CalculatorEntryBuffer
+    @Published private var negateShouldBeginEditing = true
+    @Published private var isEditing: Bool = false {
         willSet(willBeEditing) {
             // Clear the entry buffer when we start editing.
             if !isEditing && willBeEditing {
@@ -44,14 +42,14 @@ struct Calculator  {
         }
     }
 
-    init() {
-        self.flashDisplay = { }
-        self.entryBuffer = CalculatorEntryBuffer(onError: flashDisplay)
+    var flashDisplay: (() -> Void)? = nil {
+        didSet {
+            entryBuffer.errorHandler = flashDisplay
+        }
     }
 
-    init(flashDisplay: @escaping () -> Void) {
-        self.flashDisplay = flashDisplay
-        self.entryBuffer = CalculatorEntryBuffer(onError: flashDisplay)
+    init() {
+        self.entryBuffer = CalculatorEntryBuffer()
     }
 
     /// We convert -0.0 to 0.0 when writing to registers because -0.0 is confusing: these two
@@ -86,7 +84,7 @@ struct Calculator  {
     }
 
     /// doAllClear() completely resets the Calculator to its initial state.
-    private mutating func doAllClear() {
+    private func doAllClear() {
         enteredNumberSinceLastReset = false
         accumulator = 0.0
         operation = .add
@@ -115,11 +113,11 @@ struct Calculator  {
     }
 
     /// Implements the (C) - clear current register or (AC) - all clear buttons.
-    mutating func clearButtonHandler() {
+    func clearButtonHandler() {
         if clearButtonLabelIsAC {
             doAllClear()
             // Flash the display to let the user know that we performed an all clear.
-            flashDisplay()
+            flashDisplay?()
         } else {
             entryBuffer.clear()
             activeRegisterContents = entryBuffer.number
@@ -128,7 +126,7 @@ struct Calculator  {
     }
 
     /// Actually performs a calculation.
-    private mutating func calculate() {
+    private func calculate() {
         isEditing = false
         switch operation {
         case .add:
@@ -148,12 +146,12 @@ struct Calculator  {
     /// value of the argument register.
     ///
     /// For example, entering "1+1===" results in 4 (start with 1 and add 1 3 times).
-    mutating func equalsButtonHandler() {
+    func equalsButtonHandler() {
         calculate()
     }
 
     /// Implements the (0)-(9) buttons, which just insert digits in the entry buffer.
-    mutating func digitButtonHandler(_ digit: Int) {
+    func digitButtonHandler(_ digit: Int) {
         isEditing = true
         entryBuffer.enterDigit(digit)
         activeRegisterContents = entryBuffer.number
@@ -161,7 +159,7 @@ struct Calculator  {
     }
 
     /// Implements the (.) button, which just inserts a decimal point in the entry buffer.
-    mutating func decimalPointButtonHandler() {
+    func decimalPointButtonHandler() {
         isEditing = true
         entryBuffer.enterDecimalPoint()
         activeRegisterContents = entryBuffer.number
@@ -171,7 +169,7 @@ struct Calculator  {
     /// Implements the (+), (-), (\*) and (/) buttons. We do not implement any fancy order of
     /// operations: if there is another calculation that was already underway, we complete that
     /// calculation and then use it as the first argument to the new operation.
-    mutating func operationButtonHandler(_ operation: Operation) {
+    func operationButtonHandler(_ operation: Operation) {
         if isEditing && activeRegisterId == .argument {
             calculate()
         }
@@ -188,7 +186,7 @@ struct Calculator  {
     /// pressed an operation button, then (+/-) does not negate the displayed value (which is the
     /// value from before pressing an operation button). Rather, this will be interpreted as negative
     /// sign starting the entry of a new number.
-    mutating func negateButtonHandler() {
+    func negateButtonHandler() {
         if negateShouldBeginEditing {
             isEditing = true
         }
@@ -202,7 +200,7 @@ struct Calculator  {
     }
 
     /// Implement the (%) button, which divides the currently displayed register by 100.
-    mutating func percentButtonHandler() {
+    func percentButtonHandler() {
         isEditing = false
         activeRegisterContents = activeRegisterContents / 100
     }

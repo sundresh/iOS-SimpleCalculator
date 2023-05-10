@@ -12,7 +12,7 @@ import SwiftUI
 struct SimpleCalculatorApp: App {
     var body: some Scene {
         WindowGroup {
-            CalculatorView()
+            CalculatorView(calculator: Calculator())
         }
     }
 }

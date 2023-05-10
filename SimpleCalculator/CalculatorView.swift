@@ -10,7 +10,7 @@ import SwiftUI
 /// SwiftUI View that displays a simple calculator
 struct CalculatorView: View {
     /// The calculator struct does the actual calculation
-    @State private var calculator: Calculator
+    @ObservedObject private var calculator: Calculator
     /// The textOpacity object is used to animate (flash) the display with SwiftUI. This is an
     /// object rather than a struct so that we can pass a reference to it when calling the
     /// Calculator initializer from the CalculatorView initializer.
@@ -38,10 +38,11 @@ struct CalculatorView: View {
         }
     }
 
-    init() {
+    init(calculator: Calculator) {
         let textOpacity = ObservableValue<Double>(1.0)
         self.textOpacity = textOpacity
-        self.calculator = Calculator(flashDisplay: {
+        self.calculator = calculator
+        self.calculator.flashDisplay = {
             // Momentarily animate textOpacity down to 0 to flash the display
             withAnimation(.easeIn(duration: 0.05)) {
                 textOpacity.value = 0.0
@@ -49,7 +50,11 @@ struct CalculatorView: View {
             withAnimation(.easeOut(duration: 0.05).delay(0.1)) {
                 textOpacity.value = 1.0
             }
-        })
+        }
+    }
+
+    func getCalculator() -> Calculator {
+        return calculator
     }
 
     var body: some View {
@@ -101,7 +106,7 @@ struct CalculatorView: View {
 
 struct CalculatorView_Previews: PreviewProvider {
     static var previews: some View {
-        CalculatorView()
+        CalculatorView(calculator: Calculator())
     }
 }
 

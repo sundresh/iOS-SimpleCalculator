@@ -11,18 +11,14 @@ import Foundation
 /// user input as a String, along with some additional flags.
 struct CalculatorEntryBuffer: CustomStringConvertible {
     /// numberString contains the digits and decimal point the user has entered.
-    private var numberString: String = ""
     /// isNegative is a flag (rather than part of numberString) to make it easy to implement +/-
     private var isNegative: Bool = false
+    private var numberString: String = ""
     /// hasDecimalPoint keeps track of whether a decimal point has already been entered, so we can
     /// indicate an error if the user tries to enter an extra decimal point.
     private var hasDecimalPoint: Bool = false
     /// errorHandler is called if the user tries to enter an extra decimal point.
-    private let errorHandler: () -> Void
-
-    init(onError errorHandler: @escaping () -> Void) {
-        self.errorHandler = errorHandler
-    }
+    var errorHandler: (() -> Void)? = nil
 
     mutating func clear() {
         isNegative = false
@@ -49,7 +45,7 @@ struct CalculatorEntryBuffer: CustomStringConvertible {
             hasDecimalPoint = true
         } else {
             // Don't allow more than one decimal point.
-            errorHandler()
+            errorHandler?()
         }
     }
 

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		804654342A09BB1F009BAF49 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 804654332A09BB1F009BAF49 /* Settings.bundle */; };
+		804654362A0B5094009BAF49 /* CalculatorUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804654352A0B5094009BAF49 /* CalculatorUIView.swift */; };
 		806742522A01F9C3003361DF /* SimpleCalculatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806742512A01F9C3003361DF /* SimpleCalculatorApp.swift */; };
 		806742542A01F9C3003361DF /* CalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806742532A01F9C3003361DF /* CalculatorView.swift */; };
 		806742562A01F9C5003361DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 806742552A01F9C5003361DF /* Assets.xcassets */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		804654332A09BB1F009BAF49 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		804654352A0B5094009BAF49 /* CalculatorUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorUIView.swift; sourceTree = "<group>"; };
 		8067424E2A01F9C3003361DF /* SimpleCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		806742512A01F9C3003361DF /* SimpleCalculatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCalculatorApp.swift; sourceTree = "<group>"; };
 		806742532A01F9C3003361DF /* CalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorView.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				806742512A01F9C3003361DF /* SimpleCalculatorApp.swift */,
 				806742552A01F9C5003361DF /* Assets.xcassets */,
 				806742572A01F9C5003361DF /* Preview Content */,
+				804654352A0B5094009BAF49 /* CalculatorUIView.swift */,
 			);
 			path = SimpleCalculator;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				8067427E2A02F16F003361DF /* Calculator.swift in Sources */,
 				806742542A01F9C3003361DF /* CalculatorView.swift in Sources */,
 				807B26142A06D7E700B276C2 /* AppDelegate.swift in Sources */,
+				804654362A0B5094009BAF49 /* CalculatorUIView.swift in Sources */,
 				807B25D02A06C7C800B276C2 /* CalculatorViewController.swift in Sources */,
 				806742522A01F9C3003361DF /* SimpleCalculatorApp.swift in Sources */,
 				807B26162A06D7ED00B276C2 /* SceneDelegate.swift in Sources */,

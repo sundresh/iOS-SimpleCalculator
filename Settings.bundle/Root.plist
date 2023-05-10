@@ -12,9 +12,9 @@
 			<key>Title</key>
 			<string>Use SwiftUI</string>
 			<key>Key</key>
-			<string>swiftui_preference</string>
+			<string>useSwiftUI</string>
 			<key>DefaultValue</key>
-			<true/>
+			<false/>
 		</dict>
 	</array>
 </dict>
