@@ -114,6 +114,7 @@
 				807B26132A06D7E700B276C2 /* AppDelegate.swift */,
 				8067427D2A02F16F003361DF /* Calculator.swift */,
 				8067427B2A020A72003361DF /* CalculatorEntryBuffer.swift */,
+				804654352A0B5094009BAF49 /* CalculatorUIView.swift */,
 				806742532A01F9C3003361DF /* CalculatorView.swift */,
 				807B25CF2A06C7C800B276C2 /* CalculatorViewController.swift */,
 				8077FC5B2A04A1FA00FB00BD /* ObservableValue.swift */,
@@ -121,7 +122,6 @@
 				806742512A01F9C3003361DF /* SimpleCalculatorApp.swift */,
 				806742552A01F9C5003361DF /* Assets.xcassets */,
 				806742572A01F9C5003361DF /* Preview Content */,
-				804654352A0B5094009BAF49 /* CalculatorUIView.swift */,
 			);
 			path = SimpleCalculator;
 			sourceTree = "<group>";

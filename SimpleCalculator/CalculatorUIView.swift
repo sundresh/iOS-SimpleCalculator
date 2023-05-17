@@ -78,8 +78,8 @@ class CalculatorUIView: UIView {
         clearButton = makeButton(title: "AC",  color: .systemRed, row: 3, col: 0)
         negateButton = makeButton(title: "+/-", color: .systemOrange, row: 3, col: 1)
         percentButton = makeButton(title: "%",   color: .systemOrange, row: 3, col: 2)
-        divideButton = makeButton(title: "/", color: .systemOrange, row: 3, col: 3)
-        multiplyButton = makeButton(title: "*", color: .systemOrange, row: 4, col: 3)
+        divideButton = makeButton(title: "÷", color: .systemOrange, row: 3, col: 3)
+        multiplyButton = makeButton(title: "×", color: .systemOrange, row: 4, col: 3)
         subtractButton = makeButton(title: "-", color: .systemOrange, row: 5, col: 3)
         addButton = makeButton(title: "+", color: .systemOrange, row: 6, col: 3)
 
